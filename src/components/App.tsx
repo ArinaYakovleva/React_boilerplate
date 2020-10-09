@@ -6,7 +6,6 @@ export interface AppComponentProps {
 export interface AppComponentState {
     
 }
-
 export default class App extends Component<AppComponentProps, AppComponentState> {
     render() {
         return (
