@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import '../styles/App.css';
 
-export default class App extends Component {
+export interface AppComponentProps {
+}
+export interface AppComponentState {
+    
+}
+
+export default class App extends Component<AppComponentProps, AppComponentState> {
     render() {
         return (
             <div>
@@ -10,4 +16,3 @@ export default class App extends Component {
         );
     }
 }
-
