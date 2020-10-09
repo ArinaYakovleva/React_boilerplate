@@ -4,3 +4,4 @@
 #delete dist folder
 /dist
 
+node_modules/
