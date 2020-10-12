@@ -3,7 +3,7 @@ import * as React from "react";
 import { Input } from 'antd';
 // Потом импорты компонентов и стилей
 import { CheckCircleOutlined } from '@ant-design/icons';
-import './App.scss';
+import styles from './App.module.scss';
 // Общие константы из компонентов или просто константы для компонента
 const { Search } = Input;
 
@@ -31,17 +31,17 @@ export default class App extends React.Component<AppComponentProps, AppComponent
     render() {
         const {tasks} = this.state;
         return (
-            <div className="wrapper">
-                <h2 className="main-header">ToDo List App</h2>
+            <div className={styles.wrapper}>
+                <h2 className={styles["main-header"]}>ToDo List App</h2>
                 <Search placeholder="Search for the task"
                         size="large"
-                        className="search-form"
+                        className={styles["search-form"]}
                         enterButton />
-                <div className="tasks">
+                <div className={styles.tasks}>
                     {tasks.map((task, index) => (
-                        <div className="task" key={`${task}${index}`}>
+                        <div className={styles.task} key={`${task}${index}`}>
                             <CheckCircleOutlined />
-                            <p className="task-name">{task}</p>
+                            <p className={styles["task-name"]}>{task}</p>
                         </div>
                     ))}
                 </div>
