@@ -3,6 +3,7 @@ import * as React from "react";
 import { Input } from 'antd';
 // Потом импорты компонентов и стилей
 import { CheckCircleOutlined } from '@ant-design/icons';
+import './App.scss';
 // Общие константы из компонентов или просто константы для компонента
 const { Search } = Input;
 
