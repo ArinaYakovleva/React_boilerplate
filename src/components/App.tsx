@@ -1,7 +1,4 @@
 import * as React from "react";
-<<<<<<< HEAD
-import '../styles/App.scss';
-import 'antd/dist/antd.css';
 import { Input } from 'antd';
 const { Search } = Input;
 import {CheckCircleOutlined} from '@ant-design/icons';
@@ -22,16 +19,11 @@ export default class App extends React.Component<AppComponentProps, AppComponent
         
     }
 
-=======
-import '../styles/App.css';
-
-export default class App extends React.Component {
->>>>>>> cebb3b4f9edcaf7d303c2eb5ee8eab7269d95dc3
     render() {
         const {tasks} = this.state;
         return (
             <div className="wrapper">
-                <h2>ToDo List App</h2>
+                <h2 className="main-header">ToDo List App</h2>
                 <Search placeholder="Search for the task"
                         size="large"
                         className="search-form"
@@ -40,7 +32,7 @@ export default class App extends React.Component {
                     {tasks.map((task, index) => (
                         <div className="task" key={`${task}${index}`}>
                             <CheckCircleOutlined />
-                            <p>{task}</p>
+                            <p className="task-name">{task}</p>
                         </div>
                     ))}
                 </div>
@@ -48,7 +40,4 @@ export default class App extends React.Component {
         );
     }
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> cebb3b4f9edcaf7d303c2eb5ee8eab7269d95dc3

@@ -12,7 +12,7 @@ $padding: 15px;
 .wrapper {
     @extend %wrapper-layout;
     
-    h2{
+    .main-header{
         color: $color;
         text-align: center;
         font-family: $font;
@@ -30,16 +30,17 @@ $padding: 15px;
 
 .tasks{
     max-width: 400px;
-    p{
-        font-family: $font;
-        font-size: 20px;
-        color: $color;
-        padding-left: 10px;
-    }
 }
 
 .task{
     display: flex;
     padding-bottom: $padding;
+}
+
+.task-name{
+    font-family: $font;
+    font-size: 20px;
+    color: $color;
+    padding-left: 10px;
 }
 
