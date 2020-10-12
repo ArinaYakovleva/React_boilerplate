@@ -1,4 +1,5 @@
 import * as React from "react";
+<<<<<<< HEAD
 import '../styles/App.scss';
 import 'antd/dist/antd.css';
 import { Input } from 'antd';
@@ -21,6 +22,11 @@ export default class App extends React.Component<AppComponentProps, AppComponent
         
     }
 
+=======
+import '../styles/App.css';
+
+export default class App extends React.Component {
+>>>>>>> cebb3b4f9edcaf7d303c2eb5ee8eab7269d95dc3
     render() {
         const {tasks} = this.state;
         return (
@@ -42,4 +48,7 @@ export default class App extends React.Component<AppComponentProps, AppComponent
         );
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> cebb3b4f9edcaf7d303c2eb5ee8eab7269d95dc3
