@@ -1,12 +1,21 @@
+// Сначала импорты из базовых библиотек (React, Ant Design, Moment, Lodash etc)
 import * as React from "react";
 import { Input } from 'antd';
+// Потом импорты компонентов и стилей
+import { CheckCircleOutlined } from '@ant-design/icons';
+// Общие константы из компонентов или просто константы для компонента
 const { Search } = Input;
-import {CheckCircleOutlined} from '@ant-design/icons';
+
+/*
+* Это для того, чтобы можно бысро найти импорты, которые используешь. Когда будет много импортов эту оптимизацию точно полюбишь)
+* */
 
 export interface AppComponentProps {
-    
+    // Впоследствии эти интерфейсы лучше выводить в отдельный файл (App.interface.ts).
+    // Когда будет много пропсов дойти ко компоненты придется пролистав строк 100-200. Лишнее время...
 }
 export interface AppComponentState {
+    // Аналогично пропсам
     tasks: string[];
 }
 
@@ -16,7 +25,6 @@ export default class App extends React.Component<AppComponentProps, AppComponent
         this.state = {
             tasks: ['Make an app', 'Do jogging', 'Drink coffee'],
         }
-        
     }
 
     render() {

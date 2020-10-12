@@ -1,9 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import './styles/App.scss';
-import 'antd/dist/antd.css';
+// Здесь только общий файл стилей импортируется
+import './index.scss'
 import App from './components/App';
-
-
 
 ReactDOM.render(<App />, document.getElementById('root'));
