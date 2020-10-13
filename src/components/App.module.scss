@@ -1,0 +1,45 @@
+$color: #27aedb;
+$font: 'Montserrat', sans-serif;
+$margin: 20px;
+$padding: 15px;
+
+%wrapper-layout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper {
+    @extend %wrapper-layout;
+    
+    .main-header{
+        color: $color;
+        text-align: center;
+        font-family: $font;
+        margin-top: $margin;
+        font-size: 30px;
+    }
+
+}
+
+.search-form{
+    max-width: 300px;
+    margin: $margin auto $margin auto;
+
+}
+
+.tasks{
+    max-width: 400px;
+}
+
+.task{
+    display: flex;
+    padding-bottom: $padding;
+}
+
+.task-name{
+    font-family: $font;
+    font-size: 20px;
+    color: $color;
+    padding-left: 10px;
+}
