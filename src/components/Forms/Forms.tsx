@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Form, Input, InputNumber } from 'antd';
+import { Form, Input, InputNumber, Button } from 'antd';
 import styles from './Forms.module.scss';
 
 import {FormsComponentState} from './Forms.interface';
@@ -32,6 +32,7 @@ export default class Forms extends React.Component<FormsComponentState>{
                 <Form.Item label="Year">
                     <InputNumber />
                 </Form.Item>
+                <Button type="primary" block size="large">Send</Button>
             </div>
         );
     }
