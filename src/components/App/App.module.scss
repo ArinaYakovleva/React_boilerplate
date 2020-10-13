@@ -9,6 +9,12 @@ $padding: 15px;
     align-items: center;
 }
 
+// .left-forms{
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+// }
+
 .wrapper {
     @extend %wrapper-layout;
     
