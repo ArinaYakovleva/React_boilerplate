@@ -17,6 +17,7 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
             year: 0,
         }
         this.onHandleChange = this.onHandleChange.bind(this);
+        this.clearForms = this.clearForms.bind(this);
     }
 
     onHandleChange(e: any){
@@ -24,6 +25,18 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
         const name = target.name;       
         this.setState({
             [name]: target.value,
+        });
+    }
+
+    clearForms(){
+        this.setState({
+            firstName: '',
+            lastName: '',
+            age: 0,
+            phone: '',
+            vehicle: '',
+            model: '',
+            year: 0,
         });
     }
 
@@ -87,7 +100,7 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
                 </Form.Item>
                 <Button type="primary"
                         block size="large"
-                        onClick={() => this.props.sendData(arr)}
+                        onClick={() => this.props.sendData(arr, this.clearForms)}
                         >Send</Button>
             </div>
         );

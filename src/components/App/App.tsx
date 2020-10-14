@@ -8,7 +8,7 @@ import {AppComponentProps, AppComponentState} from './App.interface';
 import { Client } from '../../mocks/clients/clients.interface';
 
 export default class App extends React.Component<AppComponentProps, AppComponentState> {
-    constructor(props: any){
+    constructor(props: AppComponentProps){
         super(props);
         this.state = {
             formsData: [...MockClients],
@@ -17,10 +17,12 @@ export default class App extends React.Component<AppComponentProps, AppComponent
         this.sendData = this.sendData.bind(this);
     }
 
-    sendData(arr: Client){
+    sendData(arr: Client, func: () => void){
         this.setState({
-            formsData: [...MockClients, arr],
+            formsData: [...this.state.formsData, arr],
         });
+
+        func();
     }
 
     render() {
