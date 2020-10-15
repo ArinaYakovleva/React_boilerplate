@@ -23,9 +23,13 @@ export default class App extends React.Component<AppComponentProps, AppComponent
     }
 
     sendData(arr: Client, func: () => void){
-        this.setState({
-            formsData: [...this.state.formsData, arr],
-        });
+        if(arr.firstName && arr.lastName && arr.age && arr.phone){
+            this.setState({
+                formsData: [...this.state.formsData, arr],
+            });
+        }else{
+            return;
+        }
 
         func();
     }
