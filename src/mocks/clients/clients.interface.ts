@@ -6,6 +6,7 @@ export interface Vehicle {
 }
 
 export interface Client {
+    id: number;
     firstName: string;
     lastName: string;
     age: number;

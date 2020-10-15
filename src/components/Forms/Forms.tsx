@@ -27,7 +27,7 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
             [name]: target.value,
         });
     }
-
+    
     clearForms(){
         this.setState({
             firstName: '',
@@ -41,8 +41,9 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
     }
 
     render(){
+        const {length, edited} = this.props;
         const arr = 
-            {
+            {   id: length,
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 age: this.state.age,
@@ -98,10 +99,20 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
                                  onChange={this.onHandleChange}
                                  />
                 </Form.Item>
-                <Button type="primary"
+                {edited ? 
+                    <Button type="primary"
                         block size="large"
-                        onClick={() => this.props.sendData(arr, this.clearForms)}
-                        >Send</Button>
+                        onClick={() => this.props.onUpdate(arr, this.clearForms) }>
+                            Update
+                    </Button> :
+                        <Button type="primary"
+                            block size="large"
+                            onClick={() => this.props.sendData(arr, this.clearForms)}>
+                                Send
+                        </Button>
+                        
+                        }
+
             </div>
         );
     }

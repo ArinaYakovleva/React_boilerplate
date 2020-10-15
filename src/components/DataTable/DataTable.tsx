@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Table, Tag, Image } from 'antd';
+import { Table, Tag, Image, Space } from 'antd';
+import { DeleteTwoTone, EditTwoTone } from '@ant-design/icons';
 import styles from './DataTable.module.scss';
 import { DataTableComponentState, DataTableComponentProps } from './DataTable.inteface';
 
@@ -8,7 +9,9 @@ const { Column } = Table;
 export default class DataTable extends React.Component<{},DataTableComponentState, DataTableComponentProps>{
     constructor(props: DataTableComponentProps){
         super(props);
+
     }
+
     render(){    
         const {data} = this.props; 
         return(
@@ -22,8 +25,7 @@ export default class DataTable extends React.Component<{},DataTableComponentStat
                     dataIndex="vehicles"
                     key="vehicles"
                     render={(vehicles, index: number) => (
-                        
-                        <div key={index}>
+                        <div key={index} className={styles['data-row']}>
                         {vehicles && vehicles.map((vehicle: any, index: number) => (
                             <div key={vehicle.manufacturer}>
                             <Tag color="blue" key={`${vehicle.manufacturer}${index}`}>
@@ -36,12 +38,23 @@ export default class DataTable extends React.Component<{},DataTableComponentStat
                                 {vehicle.year}
                             </Tag>
                             {vehicle.image && <Image width={100} src={`${vehicle.image}`}/>}               
-                            </div>
+                            </div>    
                         )) 
                         }
                         </div>
                     )}
                     />
+                    <Column
+                        title="Actions"
+                        key="action"
+                        render={(record) => (
+                            <Space size="large">
+                            <EditTwoTone onClick={() => this.props.onEdit(record.id)}/>
+                            <DeleteTwoTone  onClick={() => this.props.onDelete(record.id)}/>
+                            </Space>
+                        )}
+                    />
+                    
             </Table>
         );
     }

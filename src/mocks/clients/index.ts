@@ -2,6 +2,7 @@ import { Client } from "./clients.interface";
 
 export const MockClients: Client[] = [
     {
+        id: 0,
         firstName: "Андрей",
         lastName: "Джээсов",
         age: 31,
@@ -15,12 +16,12 @@ export const MockClients: Client[] = [
             }
         ]
     },
-    {
+    {   id: 1,
         firstName: "Борис",
         lastName: "Баранов",
         age: 20,
     },
-    {
+    {   id: 2,
         firstName: "Анжела",
         lastName: "Ленинградская",
         age: 23,

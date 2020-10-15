@@ -1,7 +1,11 @@
 import { Client } from '../../mocks/clients/clients.interface';
 
 export interface FormsComponentProps {
-    sendData: () => void ;
+    length: number;
+    edited: boolean;
+    id: number;
+    sendData: (arr: Client, func: () => void) => void ;
+    onUpdate: (arr: Client) => void;
 }
 
 
