@@ -14,6 +14,7 @@ export default class App extends React.Component<AppComponentProps, AppComponent
             formsData: [...MockClients],
             isEdited: false,
             id: 0,
+            isAnyCorrect: true,
         }
 
         this.sendData = this.sendData.bind(this);
@@ -22,16 +23,20 @@ export default class App extends React.Component<AppComponentProps, AppComponent
         this.onUpdate = this.onUpdate.bind(this);
     }
 
-    sendData(arr: Client, func: () => void){
-        if(arr.firstName && arr.lastName && arr.age && arr.phone){
+    sendData(arr: Client, func: () => void, isValid: boolean){
+        if( isValid && arr.firstName && arr.lastName && arr.age && arr.phone){
             this.setState({
                 formsData: [...this.state.formsData, arr],
             });
         }else{
+            this.setState({
+                isAnyCorrect: false,
+            });
             return;
         }
 
         func();
+        
     }
 
     onClickDelete(id: number){ 
@@ -46,7 +51,8 @@ export default class App extends React.Component<AppComponentProps, AppComponent
         });
     }
 
-    onUpdate( arr: Client, func: () => void){
+    onUpdate( arr: Client, func: () => void,  isValid: boolean){ 
+
         const {formsData, id} = this.state;
         const updatedArr = [...this.state.formsData];
             updatedArr[id].firstName =  arr.firstName,
@@ -54,6 +60,7 @@ export default class App extends React.Component<AppComponentProps, AppComponent
             updatedArr[id].age = arr.age;
             updatedArr[id].phone = arr.phone;
             updatedArr[id].age = arr.age;
+
             if(formsData[id].vehicles){
                 updatedArr[id].vehicles = [...formsData[id].vehicles,
                 {manufacturer: arr.vehicles[0].manufacturer,
@@ -68,12 +75,20 @@ export default class App extends React.Component<AppComponentProps, AppComponent
                 }];
             }
 
-        this.setState({
-            formsData: [...updatedArr],
-            isEdited: false,
-        });
+        if(isValid && arr.firstName && arr.lastName && arr.age && arr.phone){   
+            this.setState({
+                formsData: [...updatedArr],
+                isEdited: false,
+            });
+        }else{
+            this.setState({
+                isAnyCorrect: false,
+            });
+            return;
+        }
 
         func();
+        
 
     }
     onEdit(newId: number){
@@ -92,6 +107,7 @@ export default class App extends React.Component<AppComponentProps, AppComponent
                        onUpdate={this.onUpdate}
                        length={this.state.formsData.length}
                        edited={this.state.isEdited}
+                       isAnyCorrect={this.state.isAnyCorrect}
                        />
                 <DataTable data={this.state.formsData} 
                            onEdit={this.onEdit}

@@ -6,6 +6,7 @@ export interface FormsComponentProps {
     id: number;
     sendData: (arr: Client, func: () => void) => void ;
     onUpdate: (arr: Client) => void;
+    isAnyCorrect: boolean;
 }
 
 
@@ -18,4 +19,9 @@ export interface FormsComponentState {
     model: string;
     year: number;
     [x: number]: any;
+    firstNameValid: boolean;
+    lastNameValid: boolean;
+    ageValid: boolean;
+    phoneValid: boolean;
+    formsValid: boolean;
 }

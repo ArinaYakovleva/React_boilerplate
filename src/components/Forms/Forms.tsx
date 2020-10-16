@@ -10,14 +10,22 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
         this.state={
             firstName: '',
             lastName: '',
-            age: 0,
+            age: null,
             phone: '',
             vehicle: '',
             model: '',
-            year: 0,
+            year: null,
+            firstNameValid: true,
+            lastNameValid: true,
+            ageValid: true,
+            phoneValid: true,
+            formsValid: true,
+ 
         }
+
         this.onHandleChange = this.onHandleChange.bind(this);
         this.clearForms = this.clearForms.bind(this);
+        this.validateField = this.validateField.bind(this);
     }
 
     onHandleChange(e: any){
@@ -26,6 +34,7 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
         this.setState({
             [name]: target.value,
         });
+        this.validateField(name, target.value);
     }
     
     clearForms(){
@@ -40,8 +49,38 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
         });
     }
 
+    validateField(fieldName: string, value: any){
+        const {firstNameValid, lastNameValid, ageValid, phoneValid} = this.state;
+        switch(fieldName){
+            case 'firstName': 
+                this.setState({
+                    firstNameValid: value.match(/^[a-zA-Zа-яА-ЯЁё]+$/) && value.length >= 3,
+                });
+                break;
+            case 'lastName':
+                this.setState({
+                    lastNameValid: value.match(/^[a-zA-Zа-яА-ЯЁё]+$/) && value.length >= 3,
+                });
+                break;
+            case 'age':
+                this.setState({
+                    ageValid: value.match(/^\d+$/) && +value > 0
+                });
+                break;
+            case 'phone':
+                this.setState({
+                    phoneValid: value.match(/^\+\d{1}\(\d{3}\)\d{3}-\d{4}$/) && value.length > 0,
+                });
+                break;
+        }
+
+        this.setState({
+            formsValid: firstNameValid && lastNameValid && ageValid && phoneValid,
+        });
+    }
+
     render(){
-        const {length, edited} = this.props;
+        const {length, edited, isAnyCorrect} = this.props;
         const arr = 
             {   id: length,
                 firstName: this.state.firstName,
@@ -58,29 +97,37 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
             };
         return(
             <div className={styles['left-forms']}>
-                <Form.Item label="Name">
-                    <Input name="firstName" type="firstName"
+                <Form.Item label="Name" className={styles['required']}>
+                   <Input name="firstName" type="firstName"
                            value={this.state.firstName}
                            onChange={this.onHandleChange}
+                           className={this.state.firstNameValid ? '' : 'error'}
                            />
+                       {!this.state.firstNameValid && <p className={styles['error']}>Name requires 3 caracters minimum<br /> and must contain only letters</p>} 
                 </Form.Item>
-                <Form.Item label="Surname">
+               
+                <Form.Item label="Surname" className={styles['required']}>
                     <Input name="lastName" type="lastName"
                            value={this.state.lastName}
                            onChange={this.onHandleChange}
                            />
+                    {!this.state.lastNameValid && <p className={styles['error']}>Lastname requires 3 caracters minimum<br /> and must contain only letter</p>}
                 </Form.Item>
-                <Form.Item label="Age">
+                <Form.Item label="Age" className={styles['required']}>
                     <Input name="age" type="age"
                                  value={this.state.age}
                                  onChange={this.onHandleChange}
                                 />
+
+                    {!this.state.ageValid && <p className={styles['error']}>Age should be more then 1 <br /> and requires only digits</p>}
                 </Form.Item>
-                <Form.Item label="Phone">
+                <Form.Item label="Phone" className={styles['required']}>
                     <Input name="phone" type="phone"
                                  value={this.state.phone}
                                  onChange={this.onHandleChange}
                                 />
+
+                    {!this.state.phoneValid && <p className={styles['error']}>+7(999)000-0000</p>}
                 </Form.Item>
                 <Form.Item label="Vehicule">
                     <Input name="vehicle" type="vehicule"
@@ -102,17 +149,17 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
                 {edited ? 
                     <Button type="primary"
                         block size="large"
-                        onClick={() => this.props.onUpdate(arr, this.clearForms) }>
+                        onClick={() => this.props.onUpdate(arr, this.clearForms,  this.state.formsValid) }>
                             Update
                     </Button> :
                         <Button type="primary"
                             block size="large"
-                            onClick={() => this.props.sendData(arr, this.clearForms)}>
+                            onClick={() => this.props.sendData(arr, this.clearForms,  this.state.formsValid)}>
                                 Send
                         </Button>
                         
                         }
-
+                {!isAnyCorrect && <p className={styles['error-message']}>Oops, something is wrong with your info...</p>}
             </div>
         );
     }

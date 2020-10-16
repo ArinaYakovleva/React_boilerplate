@@ -8,4 +8,5 @@ export interface AppComponentState {
     formsData: Client[];
     isEdited: boolean;
     id: number;
+    isAnyCorrect: boolean;
 }
