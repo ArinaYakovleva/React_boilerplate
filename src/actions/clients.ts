@@ -1,5 +1,3 @@
-import Item from "antd/lib/list/Item";
-
 export const CLIENTS_LOAD = 'CLIENTS_LOAD';
 export const SEND_DATA = 'SEND_DATA';
 export const REMOVE_DATA = 'REMOVE_DATA';
