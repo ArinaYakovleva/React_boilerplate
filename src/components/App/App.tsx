@@ -19,48 +19,7 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
         this.onEdit = this.onEdit.bind(this);
     }
 
-   
 
-    // onUpdate( arr: Client, func: () => void,  isValid: boolean){ 
-
-    //     const {formsData, id} = this.state;
-    //     const updatedArr = [...this.state.formsData];
-    //         updatedArr[id].firstName =  arr.firstName,
-    //         updatedArr[id].lastName = arr.lastName;
-    //         updatedArr[id].age = arr.age;
-    //         updatedArr[id].phone = arr.phone;
-    //         updatedArr[id].age = arr.age;
-
-    //         if(formsData[id].vehicles){
-    //             updatedArr[id].vehicles = [...formsData[id].vehicles,
-    //             {manufacturer: arr.vehicles[0].manufacturer,
-    //                 model: arr.vehicles[0].model,
-    //                 year: arr.vehicles[0].year,
-    //             }];
-    //         }else{
-    //             updatedArr[id].vehicles = [
-    //             {manufacturer: arr.vehicles[0].manufacturer,
-    //                 model: arr.vehicles[0].model,
-    //                 year: arr.vehicles[0].year,
-    //             }];
-    //         }
-
-    //     if(isValid && arr.firstName && arr.lastName && arr.age && arr.phone){   
-    //         this.setState({
-    //             formsData: [...updatedArr],
-    //             isEdited: false,
-    //         });
-    //     }else{
-    //         this.setState({
-    //             isAnyCorrect: false,
-    //         });
-    //         return;
-    //     }
-
-    //     func();
-        
-
-    // }
     onEdit(newId: number){
         this.setState({
             isEdited: true,

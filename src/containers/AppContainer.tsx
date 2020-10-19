@@ -12,12 +12,12 @@ class AppContainerClass extends React.Component<AppContainerComponentProps, AppC
 
 
     render(){
-        const {clients} = this.props;
+        const {clients, sendDataActions, removeDataActions, editDataActions} = this.props;
         return(
             <App clients={clients}
-                 sendData={this.props.sendDataActions}
-                 removeData={this.props.removeDataActions}
-                 editData={this.props.editDataActions}
+                 sendData={sendDataActions}
+                 removeData={removeDataActions}
+                 editData={editDataActions}
             />
         );
     }
