@@ -4,7 +4,7 @@ export interface FormsComponentProps {
     length: number;
     edited: boolean;
     id: number;
-    sendData: (arr: Client, func: () => void) => void ;
+    sendData: any;
     onUpdate: (arr: Client) => void;
     isAnyCorrect: boolean;
 }

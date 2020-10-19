@@ -81,6 +81,7 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
 
     render(){
         const {length, edited, isAnyCorrect} = this.props;
+        
         const arr = 
             {   id: length,
                 firstName: this.state.firstName,

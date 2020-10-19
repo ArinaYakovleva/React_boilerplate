@@ -14,30 +14,30 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
             formsData: [...MockClients],
             isEdited: false,
             id: 0,
-            isAnyCorrect: true,
+            // isAnyCorrect: true,
         }
 
-        this.sendData = this.sendData.bind(this);
+        // this.sendData = this.sendData.bind(this);
         this.onClickDelete = this.onClickDelete.bind(this);
         this.onEdit = this.onEdit.bind(this);
-        this.onUpdate = this.onUpdate.bind(this);
+        // this.onUpdate = this.onUpdate.bind(this);
     }
 
-    sendData(arr: Client, func: () => void, isValid: boolean){
-        if( isValid && arr.firstName && arr.lastName && arr.age && arr.phone){
-            this.setState({
-                formsData: [...this.state.formsData, arr],
-            });
-        }else{
-            this.setState({
-                isAnyCorrect: false,
-            });
-            return;
-        }
+    // sendData(arr: Client, func: () => void, isValid: boolean){
+    //     if( isValid && arr.firstName && arr.lastName && arr.age && arr.phone){
+    //         this.setState({
+    //             formsData: [...this.state.formsData, arr],
+    //         });
+    //     }else{
+    //         this.setState({
+    //             isAnyCorrect: false,
+    //         });
+    //         return;
+    //     }
 
-        func();
+    //     func();
         
-    }
+    // }
 
     onClickDelete(id: number){ 
         const update = this.state.formsData.filter(el => el.id !== id);
@@ -51,46 +51,47 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
         });
     }
 
-    onUpdate( arr: Client, func: () => void,  isValid: boolean){ 
+    // onUpdate( arr: Client, func: () => void,  isValid: boolean){ 
 
-        const {formsData, id} = this.state;
-        const updatedArr = [...this.state.formsData];
-            updatedArr[id].firstName =  arr.firstName,
-            updatedArr[id].lastName = arr.lastName;
-            updatedArr[id].age = arr.age;
-            updatedArr[id].phone = arr.phone;
-            updatedArr[id].age = arr.age;
+    //     const {formsData, id} = this.state;
+    //     const updatedArr = [...this.state.formsData];
+    //         updatedArr[id].firstName =  arr.firstName,
+    //         updatedArr[id].lastName = arr.lastName;
+    //         updatedArr[id].age = arr.age;
+    //         updatedArr[id].phone = arr.phone;
+    //         updatedArr[id].age = arr.age;
 
-            if(formsData[id].vehicles){
-                updatedArr[id].vehicles = [...formsData[id].vehicles,
-                {manufacturer: arr.vehicles[0].manufacturer,
-                    model: arr.vehicles[0].model,
-                    year: arr.vehicles[0].year,
-                }];
-            }else{
-                updatedArr[id].vehicles = [
-                {manufacturer: arr.vehicles[0].manufacturer,
-                    model: arr.vehicles[0].model,
-                    year: arr.vehicles[0].year,
-                }];
-            }
+    //         if(formsData[id].vehicles){
+    //             updatedArr[id].vehicles = [...formsData[id].vehicles,
+    //             {manufacturer: arr.vehicles[0].manufacturer,
+    //                 model: arr.vehicles[0].model,
+    //                 year: arr.vehicles[0].year,
+    //             }];
+    //         }else{
+    //             updatedArr[id].vehicles = [
+    //             {manufacturer: arr.vehicles[0].manufacturer,
+    //                 model: arr.vehicles[0].model,
+    //                 year: arr.vehicles[0].year,
+    //             }];
+    //         }
 
-        if(isValid && arr.firstName && arr.lastName && arr.age && arr.phone){   
-            this.setState({
-                formsData: [...updatedArr],
-                isEdited: false,
-            });
-        }else{
-            this.setState({
-                isAnyCorrect: false,
-            });
-            return;
-        }
+    //     if(isValid && arr.firstName && arr.lastName && arr.age && arr.phone){   
+    //         this.setState({
+    //             formsData: [...updatedArr],
+    //             isEdited: false,
+    //         });
+    //     }else{
+    //         this.setState({
+    //             isAnyCorrect: false,
+    //         });
+    //         return;
+    //     }
 
-        func();
+    //     func();
         
 
-    }
+    // }
+
     onEdit(newId: number){
         this.setState({
             isEdited: true,
@@ -98,17 +99,17 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
         });
     }
 
-
+    
     render() {
-        const {clients} = this.props;
+        const {clients, sendData, isAnyCorrect} = this.props;   
         return (
             <div className={styles.wrapper}>
                 <h3 className={styles["main-header"]}>Please, enter your information</h3>
-                <Forms sendData={this.sendData}
+                <Forms sendData={sendData}
                        onUpdate={this.onUpdate}
                        length={this.state.formsData.length}
                        edited={this.state.isEdited}
-                       isAnyCorrect={this.state.isAnyCorrect}
+                       isAnyCorrect={isAnyCorrect}
                        />
                 <DataTable data={clients} 
                            onEdit={this.onEdit}
