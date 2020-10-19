@@ -14,30 +14,11 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
             formsData: [...MockClients],
             isEdited: false,
             id: 0,
-            // isAnyCorrect: true,
         }
 
-        // this.sendData = this.sendData.bind(this);
         this.onClickDelete = this.onClickDelete.bind(this);
         this.onEdit = this.onEdit.bind(this);
-        // this.onUpdate = this.onUpdate.bind(this);
     }
-
-    // sendData(arr: Client, func: () => void, isValid: boolean){
-    //     if( isValid && arr.firstName && arr.lastName && arr.age && arr.phone){
-    //         this.setState({
-    //             formsData: [...this.state.formsData, arr],
-    //         });
-    //     }else{
-    //         this.setState({
-    //             isAnyCorrect: false,
-    //         });
-    //         return;
-    //     }
-
-    //     func();
-        
-    // }
 
     onClickDelete(id: number){ 
         const update = this.state.formsData.filter(el => el.id !== id);
@@ -99,9 +80,9 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
         });
     }
 
-    
+
     render() {
-        const {clients, sendData, isAnyCorrect} = this.props;   
+        const {clients, sendData} = this.props;   
         return (
             <div className={styles.wrapper}>
                 <h3 className={styles["main-header"]}>Please, enter your information</h3>
@@ -109,7 +90,6 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
                        onUpdate={this.onUpdate}
                        length={this.state.formsData.length}
                        edited={this.state.isEdited}
-                       isAnyCorrect={isAnyCorrect}
                        />
                 <DataTable data={clients} 
                            onEdit={this.onEdit}

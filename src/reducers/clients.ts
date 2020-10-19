@@ -22,7 +22,8 @@ export const clientsReducer = (state = initialState, action: any) => {
             };
 
         case SEND_DATA: 
-            return Object.assign({}, state, {entries: [...state.entries, action.payload.client]});
+    
+            return Object.assign({}, state, {entries: [...state.entries, action.payload]});
 
         default:
             return state;
@@ -30,25 +31,5 @@ export const clientsReducer = (state = initialState, action: any) => {
    
 }; 
 
-// const arr = 
-// {   id: length,
-//     firstName: this.state.firstName,
-//     lastName: this.state.lastName,
-//     age: this.state.age,
-//     phone: this.state.phone ,
-//     vehicles: [
-//         {
-//             manufacturer: this.state.vehicle,
-//             model: this.state.model,
-//             year: this.state.year,
-//         }
-//     ]
-// };
 
-// {   id: state.entries.length,
-//     firstName: action.payload.client.firstName, 
-//     lastName: action.payload.client.lastName,
-//     age: action.payload.client.age,
-//     phone: action.payload.client.phone,
-    
-// }
+
