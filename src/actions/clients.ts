@@ -1,4 +1,5 @@
 export const CLIENTS_LOAD = 'CLIENTS_LOAD';
+export const SEND_DATA = 'SEND_DATA';
 
 type ClientsLoadActions = {
     type: 'CLIENTS_LOAD';
@@ -6,7 +7,11 @@ type ClientsLoadActions = {
 }
 
 
-export const clientsLoadActions = (clients: any): ClientsLoadActions => ({
+export const clientsLoadActions = (): ClientsLoadActions => ({
     type: CLIENTS_LOAD,
 });
+
+export const sendDataActions = () => {
+
+}
 
