@@ -2,9 +2,8 @@ import * as React from "react";
 import { connect } from 'react-redux';
 
 import { App } from '../components/App/App';
-import { clientsLoadActions, sendDataActions } from '../actions/clients';
+import { clientsLoadActions, sendDataActions, removeDataActions } from '../actions/clients';
 import { AppContainerComponentProps, AppContainerState } from './AppContainer.interface';
-import { Client } from '../mocks/clients/clients.interface';
 
 class AppContainerClass extends React.Component<AppContainerComponentProps, AppContainerState>{
     componentDidMount(){
@@ -17,6 +16,7 @@ class AppContainerClass extends React.Component<AppContainerComponentProps, AppC
         return(
             <App clients={clients}
                  sendData={this.props.sendDataActions}
+                 removeData={this.props.removeDataActions}
             />
         );
     }
@@ -26,7 +26,8 @@ class AppContainerClass extends React.Component<AppContainerComponentProps, AppC
 const mapDispatchToProps = (dispatch: any) => {
     return {
         clientsLoadActions: () => dispatch(clientsLoadActions()),
-        sendDataActions: (client: any) => dispatch(sendDataActions(client))
+        sendDataActions: (client: any) => dispatch(sendDataActions(client)),
+        removeDataActions: (id: number) => dispatch(removeDataActions(id)),
     }
 }
 

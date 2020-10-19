@@ -7,10 +7,6 @@ import { DataTableComponentState, DataTableComponentProps } from './DataTable.in
 const { Column } = Table;
 
 export default class DataTable extends React.Component<{},DataTableComponentState, DataTableComponentProps>{
-    constructor(props: DataTableComponentProps){
-        super(props);
-
-    }
 
     render(){    
         const {data} = this.props;   
@@ -50,7 +46,7 @@ export default class DataTable extends React.Component<{},DataTableComponentStat
                         render={(record) => (
                             <Space size="large">
                             <EditTwoTone onClick={() => this.props.onEdit(record.id)}/>
-                            <DeleteTwoTone  onClick={() => this.props.onDelete(record.id)}/>
+                            <DeleteTwoTone onClick={() => this.props.onDelete(record.id)}/>
                             </Space>
                         )}
                     />

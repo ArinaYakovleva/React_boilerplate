@@ -2,7 +2,7 @@ import { Client } from '../../mocks/clients/clients.interface'
 
 export interface DataTableComponentProps{
     data: Client[];
-    onClickDelete: (index: number) => void;
+    onDelete: any;
     changeData: (id: number) => void;
     onEdit: () => void;
 }

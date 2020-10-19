@@ -82,7 +82,7 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
 
 
     render() {
-        const {clients, sendData} = this.props;   
+        const {clients, sendData, removeData} = this.props;   
         return (
             <div className={styles.wrapper}>
                 <h3 className={styles["main-header"]}>Please, enter your information</h3>
@@ -93,7 +93,7 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
                        />
                 <DataTable data={clients} 
                            onEdit={this.onEdit}
-                           onDelete={this.onClickDelete}/>
+                           onDelete={removeData}/>
             </div>
 
         );
