@@ -1,6 +1,7 @@
 export const CLIENTS_LOAD = 'CLIENTS_LOAD';
 export const SEND_DATA = 'SEND_DATA';
 export const REMOVE_DATA = 'REMOVE_DATA';
+export const EDIT_DATA = 'EDIT_DATA';
 
 type ClientsLoadActions = {
     type: typeof CLIENTS_LOAD;
@@ -17,6 +18,11 @@ type RemoveDataActions ={
     payload: number;
 }
 
+type EditDataAction = {
+    type: typeof EDIT_DATA;
+    payload: number;
+}
+
 export const clientsLoadActions = (): ClientsLoadActions => ({
     type: CLIENTS_LOAD,
 });
@@ -29,4 +35,9 @@ export const sendDataActions = (client: any): SendDataActions => ({
 export const removeDataActions = (id: number):RemoveDataActions => ({
     type: REMOVE_DATA,
     payload: id,
-})
+});
+
+export const editDataActions = (id: number): EditDataAction => ({
+    type: EDIT_DATA,
+    payload: id
+});

@@ -1,5 +1,4 @@
-import update from 'react-addons-update';
-import {CLIENTS_LOAD, SEND_DATA, REMOVE_DATA} from '../actions/clients';
+import {CLIENTS_LOAD, SEND_DATA, REMOVE_DATA, EDIT_DATA} from '../actions/clients';
 import {MockClients} from '../mocks/clients/index';
 import {Client} from '../mocks/clients/clients.interface';
 
