@@ -1,7 +1,11 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-// Здесь только общий файл стилей импортируется
-import './index.scss'
-import App from './components/App/App';
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import {AppContainer} from './containers/AppContainer';
+ import {Provider} from 'react-redux';
+ import {store} from './store';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ ReactDOM.render(
+    <Provider store={store}>
+        <AppContainer />
+    </Provider>,
+    document.getElementById('root'));

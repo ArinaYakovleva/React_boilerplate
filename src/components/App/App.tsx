@@ -7,7 +7,7 @@ import {MockClients} from '../../mocks/clients/index';
 import {AppComponentProps, AppComponentState} from './App.interface';
 import { Client } from '../../mocks/clients/clients.interface';
 
-export default class App extends React.Component<AppComponentProps, AppComponentState> {
+export class App extends React.Component<AppComponentProps, AppComponentState> {
     constructor(props: AppComponentProps){
         super(props);
         this.state = {
@@ -100,6 +100,7 @@ export default class App extends React.Component<AppComponentProps, AppComponent
 
 
     render() {
+        const {clients} = this.props;
         return (
             <div className={styles.wrapper}>
                 <h3 className={styles["main-header"]}>Please, enter your information</h3>
@@ -109,7 +110,7 @@ export default class App extends React.Component<AppComponentProps, AppComponent
                        edited={this.state.isEdited}
                        isAnyCorrect={this.state.isAnyCorrect}
                        />
-                <DataTable data={this.state.formsData} 
+                <DataTable data={clients} 
                            onEdit={this.onEdit}
                            onDelete={this.onClickDelete}/>
             </div>

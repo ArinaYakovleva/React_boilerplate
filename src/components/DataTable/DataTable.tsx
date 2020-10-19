@@ -1,4 +1,5 @@
 import * as React from "react";
+import 'antd/dist/antd.css';
 import { Table, Tag, Image, Space } from 'antd';
 import { DeleteTwoTone, EditTwoTone } from '@ant-design/icons';
 import styles from './DataTable.module.scss';
@@ -13,8 +14,8 @@ export default class DataTable extends React.Component<{},DataTableComponentStat
     }
 
     render(){    
-        const {data} = this.props; 
-        return(
+        const {data} = this.props;   
+        return(<>
             <Table dataSource={data} className={styles["data-table"]}>
                 <Column title="First Name" dataIndex="firstName" key="firstName" />
                 <Column title="Last Name" dataIndex="lastName" key="lastName" />
@@ -56,6 +57,7 @@ export default class DataTable extends React.Component<{},DataTableComponentStat
                     />
                     
             </Table>
+            </>
         );
     }
 }
