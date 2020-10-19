@@ -1,3 +1,5 @@
+import Item from "antd/lib/list/Item";
+
 export const CLIENTS_LOAD = 'CLIENTS_LOAD';
 export const SEND_DATA = 'SEND_DATA';
 export const REMOVE_DATA = 'REMOVE_DATA';
@@ -20,7 +22,7 @@ type RemoveDataActions ={
 
 type EditDataAction = {
     type: typeof EDIT_DATA;
-    payload: number;
+    payload: any;
 }
 
 export const clientsLoadActions = (): ClientsLoadActions => ({
@@ -37,7 +39,7 @@ export const removeDataActions = (id: number):RemoveDataActions => ({
     payload: id,
 });
 
-export const editDataActions = (id: number): EditDataAction => ({
+export const editDataActions = (item: any): EditDataAction => ({
     type: EDIT_DATA,
-    payload: id
+    payload: item,
 });

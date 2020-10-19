@@ -5,6 +5,7 @@ export interface DataTableComponentProps{
     onDelete: any;
     changeData: (id: number) => void;
     onEdit: () => void;
+    removeData: any;
 }
 
 export interface DataTableComponentState{

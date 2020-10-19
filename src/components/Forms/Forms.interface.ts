@@ -5,7 +5,7 @@ export interface FormsComponentProps {
     edited: boolean;
     id: number;
     sendData: any;
-    onUpdate: (arr: Client) => void;
+    onUpdate: any;
     
 }
 

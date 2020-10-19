@@ -31,7 +31,28 @@ export const clientsReducer = (state = initialState, action: any) => {
                 ...state,
                 entries: state.entries.filter((item: any) => item.id !== id),
             };
-
+        case EDIT_DATA:
+            const edited = action.payload;
+            return{
+                ...state,
+                entries: state.entries.map((item) => {
+                    if(item.id === edited.id){
+                    return {
+                        ...item,
+                        firstName: edited.firstName,
+                        lastName: edited.lastName,
+                        age: edited.age,
+                        phone: edited.phone,
+                        vehicles : [{                    
+                            manufacturer: item.vehicles[0].manufacturer,
+                            model: item.vehicles[0].model,
+                            year: item.vehicles[0].year,
+                        }]}
+                    }
+                    return item;
+                }),
+            }
+            
         default:
             return state;
     }

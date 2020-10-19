@@ -16,21 +16,10 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
             id: 0,
         }
 
-        this.onClickDelete = this.onClickDelete.bind(this);
         this.onEdit = this.onEdit.bind(this);
     }
 
-    onClickDelete(id: number){ 
-        const update = this.state.formsData.filter(el => el.id !== id);
-
-        for(let i = 0; i < update.length; i++){
-            update[i].id = i;
-        }
-        
-        this.setState({
-            formsData:[...update],
-        });
-    }
+   
 
     // onUpdate( arr: Client, func: () => void,  isValid: boolean){ 
 
@@ -72,7 +61,6 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
         
 
     // }
-
     onEdit(newId: number){
         this.setState({
             isEdited: true,
@@ -82,12 +70,13 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
 
 
     render() {
-        const {clients, sendData, removeData} = this.props;   
+        const {clients, sendData, removeData, editData} = this.props; 
         return (
             <div className={styles.wrapper}>
                 <h3 className={styles["main-header"]}>Please, enter your information</h3>
                 <Forms sendData={sendData}
-                       onUpdate={this.onUpdate}
+                       onUpdate={editData}
+                       id={this.state.id}
                        length={this.state.formsData.length}
                        edited={this.state.isEdited}
                        />

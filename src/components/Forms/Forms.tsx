@@ -27,6 +27,7 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
         this.clearForms = this.clearForms.bind(this);
         this.validateField = this.validateField.bind(this);
         this.onHandleClick = this.onHandleClick.bind(this);
+        this.onHandleUpdate = this.onHandleUpdate.bind(this);
     }
 
     onHandleChange(e: any){
@@ -42,11 +43,11 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
         this.setState({
             firstName: '',
             lastName: '',
-            age: 0,
+            age: null,
             phone: '',
             vehicle: '',
             model: '',
-            year: 0,
+            year: null,
         });
     }
 
@@ -80,6 +81,39 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
             this.setState({
                 isAnyCorrect: false
             })
+            return;
+        }
+        this.clearForms();
+    }
+
+    onHandleUpdate(){
+        const {isFirstNameValid, isLastNameValid, isAgeValid, isPhoneValid, formsValid} = this.state;
+
+        this.setState({
+            formsValid: isFirstNameValid && isLastNameValid && isAgeValid && isPhoneValid,
+        });
+        
+        const arr = 
+            {   id: this.props.id,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                age: this.state.age,
+                phone: this.state.phone ,
+                vehicles: [
+                    {
+                        manufacturer: this.state.vehicle,
+                        model: this.state.model,
+                        year: this.state.year,
+                    }
+                ]
+            };
+
+        if(formsValid && arr.firstName && arr.lastName && arr.age && arr.phone){
+            this.props.onUpdate(arr);
+        }else{
+            this.setState({
+                isAnyCorrect: false
+            });
             return;
         }
         this.clearForms();
@@ -184,7 +218,7 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
                 {edited ? 
                     <Button type="primary"
                         block size="large"
-                        onClick={() => this.props.onUpdate(arr, this.clearForms,  this.state.formsValid) }>
+                        onClick={this.onHandleUpdate}>
                             Update
                     </Button> :
                         <Button type="primary"

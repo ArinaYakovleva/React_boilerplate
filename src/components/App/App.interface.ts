@@ -4,6 +4,7 @@ export interface AppComponentProps {
     clients: Client[];
     sendData: any;
     removeData: any;
+    editData: any;
 }
 
 export interface AppComponentState {

@@ -6,6 +6,7 @@ export interface AppContainerComponentProps {
     clients: Client[];
     sendDataActions: any;
     removeDataActions: any;
+    editDataActions: any;
 }
 
 export interface AppContainerState {

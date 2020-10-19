@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from 'react-redux';
 
 import { App } from '../components/App/App';
-import { clientsLoadActions, sendDataActions, removeDataActions } from '../actions/clients';
+import { clientsLoadActions, sendDataActions, removeDataActions, editDataActions } from '../actions/clients';
 import { AppContainerComponentProps, AppContainerState } from './AppContainer.interface';
 
 class AppContainerClass extends React.Component<AppContainerComponentProps, AppContainerState>{
@@ -17,6 +17,7 @@ class AppContainerClass extends React.Component<AppContainerComponentProps, AppC
             <App clients={clients}
                  sendData={this.props.sendDataActions}
                  removeData={this.props.removeDataActions}
+                 editData={this.props.editDataActions}
             />
         );
     }
@@ -28,6 +29,8 @@ const mapDispatchToProps = (dispatch: any) => {
         clientsLoadActions: () => dispatch(clientsLoadActions()),
         sendDataActions: (client: any) => dispatch(sendDataActions(client)),
         removeDataActions: (id: number) => dispatch(removeDataActions(id)),
+        editDataActions: (item: any) => dispatch(editDataActions(item)),
+
     }
 }
 
