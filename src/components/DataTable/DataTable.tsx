@@ -1,5 +1,4 @@
 import * as React from "react";
-import 'antd/dist/antd.css';
 import { Table, Tag, Image, Space } from 'antd';
 import { DeleteTwoTone, EditTwoTone } from '@ant-design/icons';
 import styles from './DataTable.module.scss';
