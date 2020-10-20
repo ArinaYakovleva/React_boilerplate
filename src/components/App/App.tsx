@@ -1,11 +1,9 @@
 import * as React from "react";
 import styles from './App.module.scss';
-
 import Forms from '../Forms/Forms';
 import DataTable from '../DataTable/DataTable';
 import {MockClients} from '../../mocks/clients/index';
 import {AppComponentProps, AppComponentState} from './App.interface';
-import { Client } from '../../mocks/clients/clients.interface';
 
 export class App extends React.Component<AppComponentProps, AppComponentState> {
     constructor(props: AppComponentProps){
@@ -36,7 +34,7 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
                 <Forms sendData={sendData}
                        onUpdate={editData}
                        id={this.state.id}
-                       length={this.state.formsData.length}
+                       length={clients.length}
                        edited={this.state.isEdited}
                        />
                 <DataTable data={clients} 

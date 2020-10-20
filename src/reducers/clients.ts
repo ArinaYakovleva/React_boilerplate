@@ -44,9 +44,9 @@ export const clientsReducer = (state = initialState, action: any) => {
                         age: edited.age,
                         phone: edited.phone,
                         vehicles : [{                    
-                            manufacturer: item.vehicles[0].manufacturer,
-                            model: item.vehicles[0].model,
-                            year: item.vehicles[0].year,
+                            manufacturer: edited.vehicles[0].manufacturer,
+                            model: edited.vehicles[0].model,
+                            year: edited.vehicles[0].year,
                         }]}
                     }
                     return item;
