@@ -3,7 +3,7 @@ import { Client } from '../../mocks/clients/clients.interface';
 export interface FormsComponentProps {
     length: number;
     edited: boolean;
-    id: number;
+    id: string;
     sendData: any;
     onUpdate: any;
     

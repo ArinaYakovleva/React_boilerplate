@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import {clientsReducer} from './clients';
+import {clientsFetchReducer} from './clients';
 
 export const rootReducer = combineReducers({
-    clients: clientsReducer,
+    clientsFetchReducer
 });

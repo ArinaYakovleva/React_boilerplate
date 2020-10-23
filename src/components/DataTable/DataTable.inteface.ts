@@ -9,5 +9,5 @@ export interface DataTableComponentProps{
 }
 
 export interface DataTableComponentState{
-    isEdited: boolean;
+
 }

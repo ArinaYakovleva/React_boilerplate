@@ -7,13 +7,6 @@ import { DataTableComponentState, DataTableComponentProps } from './DataTable.in
 const { Column } = Table;
 
 export default class DataTable extends React.Component<{},DataTableComponentState, DataTableComponentProps>{
-    constructor(props: DataTableComponentProps){
-        super(props);
-        this.state = {
-            isEdited: false,
-        }
-    }
-  
 
     render(){    
         const {data} = this.props;   
@@ -27,8 +20,8 @@ export default class DataTable extends React.Component<{},DataTableComponentStat
                     title="Vehicles"
                     dataIndex="vehicles"
                     key="vehicles"
-                    render={(vehicles, index: number) => (
-                        <div key={index} className={styles['data-row']}>
+                    render={(vehicles) => (
+                        <div key={data._id} className={styles['data-row']}>
                         {vehicles && vehicles.map((vehicle: any, index: number) => (
                             <div key={vehicle.manufacturer}>
                             <Tag color="blue" key={`${vehicle.manufacturer}${index}`}>
@@ -52,8 +45,8 @@ export default class DataTable extends React.Component<{},DataTableComponentStat
                         key="action"
                         render={(record) => (
                             <Space size="large">
-                            <EditTwoTone onClick={() => this.props.onEdit(record.id)}/>
-                            <DeleteTwoTone onClick={() => this.props.onDelete(record.id)}/>
+                            <EditTwoTone onClick={() => this.props.onEdit(record._id)}/>
+                            <DeleteTwoTone  onClick={async() => await this.props.onDelete(`http://localhost:4000/api/clients/${record._id}`,record._id)}/>
                             </Space>
                         )}
                     />

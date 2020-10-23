@@ -45,13 +45,15 @@
     "@types/react-addons-update": "^0.14.20",
     "@types/react-redux": "^7.1.9",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "mongodb": "^2.2.33",
     "mongoose": "^5.10.9",
     "react": "^16.13.1",
     "react-addons-update": "^15.6.2",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "proxy": "http://localhost:4000/"
 }

@@ -51,7 +51,7 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
         });
     }
 
-    onHandleClick(){
+    async onHandleClick(){
         const {isFirstNameValid, isLastNameValid, isAgeValid, isPhoneValid, formsValid} = this.state;
 
         this.setState({
@@ -76,17 +76,18 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
             };
 
         if(formsValid && arr.firstName && arr.lastName && arr.age && arr.phone){
-            this.props.sendData(arr);
+           await this.props.sendData('http://localhost:4000/api/clients',arr);
         }else{
             this.setState({
                 isAnyCorrect: false
             })
             return;
         }
+        
         this.clearForms();
     }
 
-    onHandleUpdate(){
+    async onHandleUpdate(){
         const {isFirstNameValid, isLastNameValid, isAgeValid, isPhoneValid, formsValid} = this.state;
 
         this.setState({
@@ -109,7 +110,7 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
             };
 
         if(formsValid && arr.firstName && arr.lastName && arr.age && arr.phone){
-            this.props.onUpdate(arr);
+           await this.props.onUpdate(`http://localhost:4000/api/clients/${this.props.id}`,arr);
         }else{
             this.setState({
                 isAnyCorrect: false

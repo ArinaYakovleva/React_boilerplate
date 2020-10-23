@@ -1,5 +1,4 @@
-import {CLIENTS_LOAD, SEND_DATA, REMOVE_DATA, EDIT_DATA} from '../actions/clients';
-import {MockClients} from '../mocks/clients/index';
+import { SEND_DATA, REMOVE_DATA, EDIT_DATA, CLIENTS_FETCH_DATA_SUCCESS} from '../actions/clients';
 import {Client} from '../mocks/clients/clients.interface';
 
 type InitialStateType = {
@@ -12,24 +11,22 @@ const initialState:InitialStateType = {
     loading: false,
 };
 
-export const clientsReducer = (state = initialState, action: any) => {
-  switch(action.type){
-        case CLIENTS_LOAD:
+
+export const clientsFetchReducer = (state = initialState, action: any) => { 
+    switch(action.type){
+        case CLIENTS_FETCH_DATA_SUCCESS: 
             return {
                 ...state,
-                entries: [...MockClients],
+                entries: action.payload
             };
-
-        case SEND_DATA: 
+        case SEND_DATA:
             return Object.assign({}, state, {entries: [...state.entries, action.payload]});
 
         case REMOVE_DATA:
             const id = action.payload;
-            console.log(id);
-            
             return {
                 ...state,
-                entries: state.entries.filter((item: any) => item.id !== id),
+                entries: state.entries.filter((item: any) => item._id !== id),
             };
         case EDIT_DATA:
             const edited = action.payload;
@@ -52,12 +49,9 @@ export const clientsReducer = (state = initialState, action: any) => {
                     return item;
                 }),
             }
-            
         default:
             return state;
     }
-   
-}; 
-
+}
 
 

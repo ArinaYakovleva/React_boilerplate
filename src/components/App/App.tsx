@@ -2,23 +2,21 @@ import * as React from "react";
 import styles from './App.module.scss';
 import Forms from '../Forms/Forms';
 import DataTable from '../DataTable/DataTable';
-import {MockClients} from '../../mocks/clients/index';
 import {AppComponentProps, AppComponentState} from './App.interface';
 
 export class App extends React.Component<AppComponentProps, AppComponentState> {
     constructor(props: AppComponentProps){
         super(props);
         this.state = {
-            formsData: [...MockClients],
             isEdited: false,
-            id: 0,
+            id: '',
         }
 
         this.onEdit = this.onEdit.bind(this);
     }
 
 
-    onEdit(newId: number){
+    onEdit(newId: string){
         this.setState({
             isEdited: true,
             id: newId,
@@ -27,7 +25,7 @@ export class App extends React.Component<AppComponentProps, AppComponentState> {
 
 
     render() {
-        const {clients, sendData, removeData, editData} = this.props; 
+        const {clients, sendData, removeData, editData, currentId} = this.props; 
         return (
             <div className={styles.wrapper}>
                 <h3 className={styles["main-header"]}>Please, enter your information</h3>

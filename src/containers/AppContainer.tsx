@@ -2,22 +2,27 @@ import * as React from "react";
 import { connect } from 'react-redux';
 
 import { App } from '../components/App/App';
-import { clientsLoadActions, sendDataActions, removeDataActions, editDataActions } from '../actions/clients';
+import { clientsFetchData, clientsAddData, clientsRemoveData, clientsUpdateData } from '../actions/clients';
 import { AppContainerComponentProps, AppContainerState } from './AppContainer.interface';
+import { url } from "inspector";
 
 class AppContainerClass extends React.Component<AppContainerComponentProps, AppContainerState>{
-    componentDidMount(){
-        this.props.clientsLoadActions();
+    async componentDidMount(){
+      await this.props.fetchData('http://localhost:4000/api/clients');
+
     }
 
+    async componentDidUpdate(){
+        await this.props.fetchData('http://localhost:4000/api/clients');
+    }
 
     render(){
-        const {clients, sendDataActions, removeDataActions, editDataActions} = this.props;
+        const {clients, clientsAddData, clientsRemoveData, clientsUpdateData} = this.props;
         return(
             <App clients={clients}
-                 sendData={sendDataActions}
-                 removeData={removeDataActions}
-                 editData={editDataActions}
+                 sendData={clientsAddData}
+                 removeData={clientsRemoveData}
+                 editData={clientsUpdateData}
             />
         );
     }
@@ -26,20 +31,18 @@ class AppContainerClass extends React.Component<AppContainerComponentProps, AppC
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        clientsLoadActions: () => dispatch(clientsLoadActions()),
-        sendDataActions: (client: any) => dispatch(sendDataActions(client)),
-        removeDataActions: (id: number) => dispatch(removeDataActions(id)),
-        editDataActions: (item: any) => dispatch(editDataActions(item)),
-
+        fetchData: async (url: string) => await dispatch(clientsFetchData(url)),
+        clientsAddData: async (url: string, client: any) => await dispatch(clientsAddData(url, client)),
+        clientsRemoveData: async (url: string, id: string) => await dispatch(clientsRemoveData(url, id)),
+        clientsUpdateData: async(url: string, item: any) => await dispatch(clientsUpdateData(url, item)),
     }
 }
-
-const mapStateToProps = (state: any, ownProps: any) =>{ 
-    const clients = state.clients.entries; 
+const mapStateToProps = (state: any) =>{  
     return {
-        clients
+        clients: state.clientsFetchReducer.entries,
     };
 }
+
 
 export const AppContainer = connect(mapStateToProps, mapDispatchToProps)(AppContainerClass);
 

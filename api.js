@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Client = require('../client')
+const Client = require('./client')
 
 router.get('/clients', function (req, res) {
     Client.find({})
@@ -8,6 +8,7 @@ router.get('/clients', function (req, res) {
               res.send(client)
           })    
 })
+
 
 router.post('/clients', function (req, res) {
     Client.create(req.body)
