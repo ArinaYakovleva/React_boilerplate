@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { App } from '../components/App/App';
 import { clientsFetchData, clientsAddData, clientsRemoveData, clientsUpdateData } from '../actions/clients';
 import { AppContainerComponentProps, AppContainerState } from './AppContainer.interface';
-import { url } from "inspector";
 
 class AppContainerClass extends React.Component<AppContainerComponentProps, AppContainerState>{
     async componentDidMount(){

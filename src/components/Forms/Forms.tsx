@@ -121,7 +121,6 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
     }
 
     validateField(fieldName: string, value: any){
-        const {isFirstNameValid, isLastNameValid, isAgeValid, isPhoneValid} = this.state;
         switch(fieldName){
             case 'firstName': 
                 this.setState({
@@ -149,22 +148,8 @@ export default class Forms extends React.Component<{}, FormsComponentState, Form
 
     render(){
         const { isAnyCorrect } = this.state;
-        const { length, edited } = this.props;
+        const { edited } = this.props;
         
-        const arr = 
-            {   id: length,
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                age: this.state.age,
-                phone: this.state.phone ,
-                vehicles: [
-                    {
-                        manufacturer: this.state.vehicle,
-                        model: this.state.model,
-                        year: this.state.year,
-                    }
-                ]
-            };
         return(
             <div className={styles['left-forms']}>
                 <Form.Item label="Name" className={styles['required']}>
